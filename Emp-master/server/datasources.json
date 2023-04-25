@@ -1,0 +1,10 @@
+{
+  "myuser": {
+    "url": "mongodb+srv://employee:test1234@cluster0.6jsotiu.mongodb.net/?retryWrites=true&w=majority",
+    "database": "employee",
+    "password": "test1234",
+    "name": "myuser",
+    "user": "employee",
+    "connector": "mongodb"
+  }
+}

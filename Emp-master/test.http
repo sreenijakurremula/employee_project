@@ -1,0 +1,13 @@
+### Create Absense
+POST http://localhost:9000/api/absence
+Authorization: xyz
+
+{}
+
+
+### Create User
+POST http://localhost:9000/api/user
+Authorization: xyz
+Content-Type: application/json
+
+{}

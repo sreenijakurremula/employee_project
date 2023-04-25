@@ -1,0 +1,11 @@
+Absence Management System:
+    FrontEnd:
+        Login:
+            ☐ Handle login form submit
+    Backend:
+        Manager:
+            ☐ User list /api/users
+            ☐ Absence approval/reject POST /api/absence/approveRejectAbsence
+        Employee:
+            ☐ Absense list
+            ☐ ability to raise a leave request
