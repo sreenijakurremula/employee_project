@@ -21,13 +21,14 @@
     export default {
         data(){
           return{
-            users: []
+            users: [],
+            token:localStorage.getItem('token')
           }
         },
 
         methods:{
         getAllUsers(){
-        this.$http.get('http://localhost:3000/api/myusers')
+        this.$http.get(`http://localhost:3000/api/myusers?access_token=${this.token}`)
         .then(res => {
           console.log(res);
           this.users = res.data;

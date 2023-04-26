@@ -1,32 +1,44 @@
 <template>
+  
     <div>
       
         <app-employeeheader></app-employeeheader>
         <div class="text-center">
-    <v-progress-circular
-      :rotate="360"
+    <v-progress-circular 
+    :rotate="360"
       :size="100"
       :width="15"
       :model-value="value"
+      color="black">
+      Sick:
+      {{ sickUsed }}/12
+    </v-progress-circular>
+
+    <v-progress-circular
+    :rotate="360"
+      :size="100"
+      :width="15"
+      :model-value="val"
       color="black"
-    >
-      {{ daysUsed }}/25
+    > Vacation
+      {{ vacationUsed }}/25
     </v-progress-circular>
   </div>
           
-          <div>
-            <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" @click="status">Leave Requests</button>
+        <div class="pull-right">
+          <div class="btn-group">
+            <button class="btn btn-success btn-filter" @click="status">Leave Request</button>
+            <button class="btn btn-warning btn-filter" @click="request">Request Leave</button>
           </div>
-          <div>
-            <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" @click="request">Request Leave</button>
-          </div>
+        </div>
+         
        <app-request v-if="requestform"></app-request>
        <app-getuserabsence v-if="statusform"></app-getuserabsence>
 
     </div>
 </template>
 
-<script>
+<script >
 import requestLeave from '../operations/requestLeave.vue';
 import employeeHeader from '../headers/employeeHeader.vue';
 import getUserAbsence from '../operations/getUserAbsence.vue';
@@ -36,7 +48,8 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
                 requestform:false,
                 statusform:false,
                 value: 0,
-                daysUsed:15,
+                sickUsed:localStorage.getItem('sickLeaves'),
+                vacationUsed:localStorage.getItem('vacationLeaves'),
             }
            
         },
@@ -54,14 +67,13 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
            this.statusform = !this.statusform
         }
     },
-    beforeUnmount () {
-      clearInterval(this.interval)
-    },
     mounted () {
-        if (this.value === 25) {
+        if (this.value == 25) {
           return (this.value = 0)
         }
-        this.value += (this.daysUsed/25)*100
+        this.value = (12-this.sickUsed/12)*100;
+        console.log(this.sickUsed);
+        console.log(this.value);
 
     },
   }
@@ -70,6 +82,9 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
 
 <style lang="css" scoped>
 /* Container needed to position the button. Adjust the width as needed */
+.text-centre{
+      color:"black"
+}
 .container {
     position: relative;
     width: 50%;

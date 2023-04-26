@@ -53,8 +53,8 @@
                       localStorage.setItem('userName',res.body.userName);
                       localStorage.setItem('userID',res.body.userID);
                       localStorage.setItem('managerID',res.body.managerID);
-                      localStorage.setItem('token',res.body.id);
-                    
+                      localStorage.setItem('vacationLeaves',res.body.vacationLeaves);
+                      localStorage.setItem('sickLeaves',res.body.sickLeaves);
                       if(res.body.role=='Admin'){
                         this.$router.push('/admin-dash')
                       }

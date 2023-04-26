@@ -63,13 +63,14 @@
                     userName:localStorage.getItem('userName'),
                     userID:localStorage.getItem('userID'),
                     managerID:localStorage.getItem('managerID'),
+                    token:localStorage.getItem('token')
                 }
             }
         },
         methods: {
           applyLeave(event) {
             event.preventDefault();
-              this.$http.post('http://localhost:3000/api/absences', this.form)
+              this.$http.post(`http://localhost:3000/api/absences?access_token=${this.token}`, this.form)
               .then(res => {
                  
                     console.log(res);

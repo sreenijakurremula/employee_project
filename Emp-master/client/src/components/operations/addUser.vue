@@ -58,13 +58,14 @@
           managerID:'',
           password:'',
           role:''
-        }
+        },
+        token:localStorage.getItem('token')
       }
     },
     methods:{
       submit(){
         console.log(this.User);
-        this.$http.post('http://localhost:3000/api/myusers', this.User)
+        this.$http.post(`http://localhost:3000/api/myusers?access_token=${this.token}`, this.User)
         .then(res => {
           console.log(res);
           this.register=true;

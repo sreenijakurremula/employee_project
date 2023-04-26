@@ -22,11 +22,12 @@
           data() {
             return {
                 absenceUsers: [],
+                token:localStorage.getItem('token'),
             }
           },
           methods: {
              getAllAbsences(){
-                this.$http.get('http://localhost:3000/api/absences')
+                this.$http.get(`http://localhost:3000/api/absences?access_token=${this.token}`)
                 .then(res => {
                     console.log(res);
                     this.absenceUsers = res.data;

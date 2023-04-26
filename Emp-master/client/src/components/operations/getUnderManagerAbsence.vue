@@ -69,7 +69,8 @@
         data() {
             return {
                  employees: [],
-                 managerID:localStorage.getItem('managerID')
+                 managerID:localStorage.getItem('managerID'),
+                 token:localStorage.getItem('token')
             }
         },
         methods:{
@@ -79,7 +80,7 @@
                let body = {
                 userID
                }
-               this.$http.post('http://localhost:3000/api/absences/acceptRequest',body,function(err,data){
+               this.$http.post(`http://localhost:3000/api/absences/acceptRequest?access_token=${this.token}`,body,function(err,data){
                 if(err){
                     console.log(err);
                 }
@@ -93,7 +94,7 @@
                let body = {
                 userID
                }
-               this.$http.post('http://localhost:3000/api/absences/rejectRequest',body,function(err,data){
+               this.$http.post(`http://localhost:3000/api/absences/rejectRequest?access_token=${this.token}`,body,function(err,data){
                 if(err){
                     console.log(err);
                 }
