@@ -1,7 +1,18 @@
 <template>
     <div>
+      
         <app-employeeheader></app-employeeheader>
-        
+        <div class="text-center">
+    <v-progress-circular
+      :rotate="360"
+      :size="100"
+      :width="15"
+      :model-value="value"
+      color="black"
+    >
+      {{ daysUsed }}/25
+    </v-progress-circular>
+  </div>
           
           <div>
             <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" @click="status">Leave Requests</button>
@@ -23,11 +34,13 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
          data() {
             return {
                 requestform:false,
-                statusform:false
+                statusform:false,
+                value: 0,
+                daysUsed:15,
             }
            
         },
-
+   
         components: {
             appRequest: requestLeave,
             appEmployeeheader: employeeHeader,
@@ -40,9 +53,19 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
         status(){
            this.statusform = !this.statusform
         }
-    }
+    },
+    beforeUnmount () {
+      clearInterval(this.interval)
+    },
+    mounted () {
+        if (this.value === 25) {
+          return (this.value = 0)
+        }
+        this.value += (this.daysUsed/25)*100
 
-    }
+    },
+  }
+
 </script>
 
 <style lang="css" scoped>

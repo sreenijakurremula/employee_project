@@ -57,12 +57,13 @@
         data() {
         return {
         employees: [],
-         managerID:localStorage.getItem('managerID')
+         managerID:localStorage.getItem('managerID'),
+         token:localStorage.getItem('token')
         }
     },
     methods : {
      getAllEmp(){
-    this.$http.get(`http://localhost:3000/api/myusers/getAllEmp?undefined=${this.managerID}`)
+    this.$http.get(`http://localhost:3000/api/myusers/getAllEmp?undefined=1&access_token=${this.token}`)
         .then(res => {
             console.log(res);
             this.employees = res.data;

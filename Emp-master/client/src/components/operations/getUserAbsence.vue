@@ -44,7 +44,6 @@
                                                 <td>{{employee.leaves}}</td>
                                                 
                                                 <td>{{employee.status}}</td>
-                                                <td  v-if="employee.status=='pending'"><button class="btn btn-warning">Edit</button></td>
                                             </tr>
                                 </tbody>
                             </table>

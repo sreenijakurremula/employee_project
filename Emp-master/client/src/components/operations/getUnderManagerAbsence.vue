@@ -9,7 +9,7 @@
                         <h2 class="card-title h3">Leave Applications</h2>
                         <p class="card-subtitle">Application of Leaves by Employees</p>
                     </div>
-                    <a class="btn pmd-ripple-effect btn-outline-primary ml-auto btn-sm" href="leave.html">View All</a>
+                    
                 </div>
                 <!-- Card Header End -->
 
